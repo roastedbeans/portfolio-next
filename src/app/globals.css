@@ -1,137 +1,304 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY SYSTEM — Golden-ratio 1.618 scale
+   1rem → 1.618 → 2.618 → 4.236 → 6.854
+
+   Semantic rank and visual size are intentionally decoupled:
+   size comes from a named class, never from the HTML tag.
+   Display sans = IBM Plex Sans · Labels/code = IBM Plex Mono
+   ═══════════════════════════════════════════════════════════ */
+
+/* .display — the single largest type on the page (hero only) */
+.display {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(3.25rem, 9vw, 6.854rem);
+	font-weight: 600;
+	line-height: 0.9;
+	letter-spacing: -0.035em;
+}
+
+/* .title — major section titles (h2) */
+.title {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(2.25rem, 5.5vw, 4.236rem);
+	font-weight: 600;
+	line-height: 0.98;
+	letter-spacing: -0.025em;
+}
+
+/* .heading — subsection headings (h3) */
+.heading {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(1.5rem, 4vw, 2.618rem);
+	font-weight: 500;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+
+/* .subheading — card / item titles (h4) */
+.subheading {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(1.25rem, 2.5vw, 1.618rem);
+	font-weight: 500;
+	line-height: 1.3;
+	letter-spacing: -0.015em;
+}
+
+/* .small-heading — tight group labels (h5) */
+.small-heading {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(1rem, 1.5vw, 1.125rem);
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+}
+
+/* .tag — mono uppercase category labels (h6). 1–3 words only */
+.tag {
+	font-family: var(--font-plex-mono), monospace;
+	font-size: clamp(0.7rem, 1.1vw, 0.8125rem);
+	font-weight: 500;
+	line-height: 1.5;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+/* BODY SCALE */
+.body {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(1rem, 1.4vw, 1.125rem);
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+.list {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(1rem, 1.4vw, 1.0625rem);
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+.caption {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/* .lead — subtitle / intro paragraph that sits under a heading */
+.lead {
+	font-family: var(--font-plex-sans), sans-serif;
+	font-size: clamp(1.125rem, 2vw, 1.5rem);
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: -0.01em;
+}
+
+/* UTILITY */
+.label {
+	font-family: var(--font-plex-mono), monospace;
+	font-size: clamp(0.65rem, 1vw, 0.75rem);
+	font-weight: 500;
+	line-height: 1.5;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.mono {
+	font-family: var(--font-plex-mono), monospace;
+}
+
+/* Large decorative index numbers (mono) */
+.display-number {
+	font-family: var(--font-plex-mono), monospace;
+	font-weight: 500;
+	line-height: 0.8;
+	letter-spacing: -0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THEME TOKENS — Editorial light
+   Background (warm paper) #FAF9F6 · Ink #161616
+   Accent (roasted amber)  #C2410C · Hairline #E7E4DD
+   ═══════════════════════════════════════════════════════════ */
+:root {
+	color-scheme: light;
+	--radius: 0.625rem;
+
+	--background: #f3f2ef;
+	--foreground: #161616;
+	--card: #ffffff;
+	--card-foreground: #161616;
+	--popover: #ffffff;
+	--popover-foreground: #161616;
+	--primary: #c2410c;
+	--primary-foreground: #faf9f6;
+	--secondary: #eceae5;
+	--secondary-foreground: #161616;
+	--muted: #eceae5;
+	--muted-foreground: #6b6b6b;
+	--accent: #c2410c;
+	--accent-foreground: #faf9f6;
+	--destructive: #b3261e;
+	--border: #e4e1da;
+	--input: #e4e1da;
+	--ring: #c2410c;
+
+	/* Dark surfaces — CTA banner + footer (near-black with warm tint) */
+	--dark: #141312;
+	--dark-foreground: #f6f5f2;
+	--dark-muted: rgba(246, 245, 242, 0.6);
+	--dark-border: rgba(246, 245, 242, 0.14);
+
+	/* Paper + ink derivations */
+	--paper-2: #f4f2ec;
+	--hairline: #e7e4dd;
+	--ink-70: rgba(22, 22, 22, 0.7);
+	--ink-50: rgba(22, 22, 22, 0.5);
+	--ink-12: rgba(22, 22, 22, 0.12);
+	--ink-06: rgba(22, 22, 22, 0.06);
+
+	/* Accent opacity scale */
+	--accent-12: rgba(194, 65, 12, 0.12);
+	--accent-08: rgba(194, 65, 12, 0.08);
+}
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-cod-gray-50: #f6f6f6;
-  --color-cod-gray-100: #e7e7e7;
-  --color-cod-gray-200: #d1d1d1;
-  --color-cod-gray-300: #b0b0b0;
-  --color-cod-gray-400: #888888;
-  --color-cod-gray-500: #6d6d6d;
-  --color-cod-gray-600: #5d5d5d;
-  --color-cod-gray-700: #4f4f4f;
-  --color-cod-gray-800: #454545;
-  --color-cod-gray-900: #3d3d3d;
-  --color-cod-gray-950: #0d0d0d;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
 
-:root {
-  --radius: 0.625rem;
-  --background: #ffffff;
-  --foreground: #0d0d0d;
-  --card: #ffffff;
-  --card-foreground: #0d0d0d;
-  --popover: #ffffff;
-  --popover-foreground: #0d0d0d;
-  --primary: #0d0d0d;
-  --primary-foreground: #f6f6f6;
-  --secondary: #3d3d3d;
-  --secondary-foreground: #0d0d0d;
-  --muted: #f6f6f6;
-  --muted-foreground: #6d6d6d;
-  --accent: #e7e7e7;
-  --accent-foreground: #0d0d0d;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: #d1d1d1;
-  --input: #d1d1d1;
-  --ring: #6d6d6d;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #f6f6f6;
-  --sidebar-foreground: #0d0d0d;
-  --sidebar-primary: #3d3d3d;
-  --sidebar-primary-foreground: #f6f6f6;
-  --sidebar-accent: #e7e7e7;
-  --sidebar-accent-foreground: #0d0d0d;
-  --sidebar-border: #d1d1d1;
-  --sidebar-ring: #6d6d6d;
-}
+	--color-paper-2: var(--paper-2);
+	--color-hairline: var(--hairline);
+	--color-ink-70: var(--ink-70);
+	--color-ink-50: var(--ink-50);
+	--color-accent-12: var(--accent-12);
+	--color-accent-08: var(--accent-08);
+	--color-dark: var(--dark);
+	--color-dark-foreground: var(--dark-foreground);
+	--color-dark-muted: var(--dark-muted);
+	--color-dark-border: var(--dark-border);
 
-.dark {
-  --background: #0d0d0d;
-  --foreground: #f6f6f6;
-  --card: #3d3d3d;
-  --card-foreground: #f6f6f6;
-  --popover: #3d3d3d;
-  --popover-foreground: #f6f6f6;
-  --primary: #f6f6f6;
-  --primary-foreground: #0d0d0d;
-  --secondary: #e7e7e7;
-  --secondary-foreground: #f6f6f6;
-  --muted: #454545;
-  --muted-foreground: #b0b0b0;
-  --accent: #454545;
-  --accent-foreground: #f6f6f6;
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: #454545;
-  --input: #4f4f4f;
-  --ring: #888888;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #3d3d3d;
-  --sidebar-foreground: #f6f6f6;
-  --sidebar-primary: #e7e7e7;
-  --sidebar-primary-foreground: #0d0d0d;
-  --sidebar-accent: #454545;
-  --sidebar-accent-foreground: #f6f6f6;
-  --sidebar-border: #454545;
-  --sidebar-ring: #888888;
+	--font-sans: var(--font-plex-sans);
+	--font-mono: var(--font-plex-mono);
+
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--radius-2xl: calc(var(--radius) + 8px);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 5.5rem;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		font-family: var(--font-plex-sans), sans-serif;
+		position: relative;
+		overflow-x: hidden;
+		/* Faint warm halo behind the hero for atmosphere */
+		background-image: radial-gradient(
+			55rem 36rem at 50% -8rem,
+			var(--accent-08),
+			transparent 72%
+		);
+	}
+
+	/* Subtle paper grain overlay for editorial texture */
+	body::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 0.035;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+
+	body > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	::selection {
+		background: var(--primary);
+		color: var(--primary-foreground);
+	}
 }
 
-.clip-half-right {
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+@layer components {
+	/* Accessible focus ring */
+	.focus-ring:focus-visible {
+		outline: 2px solid var(--ring);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+
+	/* Editorial animated underline (grows from left on hover) */
+	.link-underline {
+		background-image: linear-gradient(var(--foreground), var(--foreground));
+		background-size: 0% 1px;
+		background-position: 0 100%;
+		background-repeat: no-repeat;
+		transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.link-underline:hover,
+	.link-underline:focus-visible {
+		background-size: 100% 1px;
+	}
+	.link-underline-accent {
+		background-image: linear-gradient(var(--primary), var(--primary));
+	}
+	.link-underline-light {
+		background-image: linear-gradient(
+			var(--dark-foreground),
+			var(--dark-foreground)
+		);
+	}
+
+	/* Hairline divider */
+	.hairline {
+		border: 0;
+		border-top: 1px solid var(--hairline);
+	}
+}
+
+/* Respect reduced-motion: no transforms, content visible immediately */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }

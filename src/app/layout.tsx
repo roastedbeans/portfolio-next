@@ -1,34 +1,72 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
+import './globals.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const plexSans = IBM_Plex_Sans({
+	variable: '--font-plex-sans',
+	subsets: ['latin'],
+	weight: ['300', '400', '500', '600', '700'],
+	display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const plexMono = IBM_Plex_Mono({
+	variable: '--font-plex-mono',
+	subsets: ['latin'],
+	weight: ['400', '500', '600'],
+	display: 'swap',
 });
+
+// Update to the production domain when deployed.
+const siteUrl = 'https://vincentabella.dev';
+const title = 'Vincent Abella · Software Developer & Cybersecurity Researcher';
+const description =
+	'Vincent Dominguito Abella, a software engineer and cybersecurity researcher building web products and securing 4G/5G networks. Based in Cebu, Philippines and Seoul, South Korea.';
 
 export const metadata: Metadata = {
-  title: "Vincent Abella",
-  description: "Portfolio Website",
+	metadataBase: new URL(siteUrl),
+	title: {
+		default: title,
+		template: '%s · Vincent Abella',
+	},
+	description,
+	keywords: [
+		'Vincent Abella',
+		'Software Developer',
+		'Full-Stack Developer',
+		'Cybersecurity Researcher',
+		'Next.js',
+		'React',
+		'TypeScript',
+		'5G Security',
+		'Cebu',
+		'Seoul',
+	],
+	authors: [{ name: 'Vincent Dominguito Abella' }],
+	creator: 'Vincent Dominguito Abella',
+	openGraph: {
+		type: 'website',
+		url: siteUrl,
+		title,
+		description,
+		siteName: 'Vincent Abella',
+		locale: 'en_US',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title,
+		description,
+	},
+	icons: { icon: '/favicon.ico' },
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en' className={`${plexSans.variable} ${plexMono.variable}`}>
+			<body className='antialiased'>{children}</body>
+		</html>
+	);
 }
