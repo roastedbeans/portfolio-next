@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Sans, IBM_Plex_Mono, IBM_Plex_Serif } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const plexSans = IBM_Plex_Sans({
@@ -77,7 +78,10 @@ export default function RootLayout({
 		<html
 			lang='en'
 			className={`${plexSans.variable} ${plexMono.variable} ${plexSerif.variable}`}>
-			<body className='antialiased'>{children}</body>
+			<body className='antialiased'>
+				{children}
+				<Analytics />
+			</body>
 		</html>
 	);
 }
