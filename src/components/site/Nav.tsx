@@ -57,7 +57,9 @@ export function Nav() {
 						</a>
 					))}
 					<a
-						href='#contact'
+						href={profile.linkedin}
+						target='_blank'
+						rel='noreferrer'
 						className='group label inline-flex items-center gap-1.5 text-foreground'>
 						<span className='link-underline'>Get in touch</span>
 						<ArrowUpRight className='size-3.5 opacity-60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100' />

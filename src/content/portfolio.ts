@@ -79,6 +79,17 @@ export interface Organization {
 	highlight?: boolean;
 }
 
+export interface Publication {
+	title: string;
+	year: string;
+	journal: string;
+	/** Short venue name for the card masthead (falls back to `journal`). */
+	venueShort?: string;
+	authors?: string;
+	href?: string;
+	doi?: string;
+}
+
 export const profile = {
 	name: 'Vincent Dominguito Abella',
 	shortName: 'Vincent Abella',
@@ -89,14 +100,16 @@ export const profile = {
 	tagline:
 		'I build independent web products and secure next-generation 4G/5G mobile networks.',
 	bio: 'I build independent web products and research the security of 4G/5G mobile networks, leading teams and shipping solutions that make a meaningful impact.',
-	email: 'vinceabella05@gmail.com',
+	email: 'vincent.abella@xylvir.tech',
+	linkedin: 'https://www.linkedin.com/in/vinch05/',
 	cv: '/assets/portfolio.pdf',
 	greeting: 'Hello',
 	intro:
-		"I'm Vincent Abella, a software developer and cybersecurity researcher.",
+		'I am Vincent Abella, a software developer and cybersecurity researcher. I build independent web products and secure next-generation 4G/5G mobile networks.',
 	stats: [
 		{ value: '4+', label: 'Years building' },
-		{ value: '6', label: 'Projects shipped' },
+		{ value: '9', label: 'Projects shipped' },
+		{ value: '6', label: 'Publications' },
 		{ value: '4', label: 'Awards won' },
 	] as Stat[],
 	facts: [
@@ -108,9 +121,9 @@ export const profile = {
 };
 
 export const socials: SocialLink[] = [
-	{ label: 'Email', href: 'mailto:vinceabella05@gmail.com', handle: 'vinceabella05@gmail.com' },
+	{ label: 'Email', href: `mailto:${profile.email}`, handle: profile.email },
 	{ label: 'GitHub', href: 'https://github.com/roastedbeans', handle: 'roastedbeans' },
-	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/vinch05/', handle: 'in/vinch05' },
+	{ label: 'LinkedIn', href: profile.linkedin, handle: 'in/vinch05' },
 ];
 
 export const navItems: NavItem[] = [
@@ -154,7 +167,7 @@ export const experience: ExperienceItem[] = [
 		company: 'Techflow.ai',
 		tags: ['WeWeb', 'OpenAI', 'No-Code'],
 		location: 'Germany (Remote)',
-		period: '2024–Present',
+		period: '2024/11–Present',
 		current: true,
 		highlights: [
 			'Developed a full-stack no-code dashboard with WeWeb to manage an internal payment system.',
@@ -166,7 +179,7 @@ export const experience: ExperienceItem[] = [
 		company: 'Mod Technologies LLC',
 		tags: ['Next.js', 'TypeScript', 'GraphQL'],
 		location: 'New Hudson, Michigan, USA (Remote)',
-		period: '2024–2025',
+		period: '2024/03–2025/08',
 		highlights: [
 			'Developed frontend and backend features for the business website using Next.js, TypeScript, and Tailwind CSS with responsive design across platforms.',
 			'Migrated a legacy React.js codebase to the Next.js framework.',
@@ -178,7 +191,7 @@ export const experience: ExperienceItem[] = [
 		company: "Today's Carolinian",
 		tags: ['Nuxt.js', 'PrimeVue'],
 		location: 'Cebu City, Philippines',
-		period: '2023–2024',
+		period: '2023/09–2024/07',
 		highlights: [
 			'Developed the frontend of the intramurals sports-scoring system using Nuxt.js, PrimeVue, and Tailwind CSS with responsive design across platforms.',
 		],
@@ -296,6 +309,15 @@ export const projects: Project[] = [
 		stack: ['Unity', 'C#', 'Python'],
 		description:
 			'A top-down supermarket simulation integrated with a machine-learning-driven sorting algorithm over socket communication, with Python-generated performance graphs validating efficiency across shopping scenarios.',
+	},
+	{
+		name: 'Xylvir Technologies',
+		category: 'Portfolio Website',
+		year: '2026',
+		location: 'Cebu City, Philippines',
+		stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+		description:
+			'Developed the portfolio website for Xylvir Technologies showcasing all company projects and technical expertise.',
 	},
 ];
 
@@ -428,5 +450,54 @@ export const organizations: Organization[] = [
 		role: 'Councilor',
 		location: 'Cebu City, Philippines',
 		period: '2022–2023',
+	},
+];
+
+export const publications: Publication[] = [
+	{
+		title: 'SMDEVC: Specification-Based Misbehavior Detection for Electric Vehicle Charging Stations',
+		year: '2026',
+		journal: 'Applied Science',
+		doi: '10.3390/app16115605',
+		href: 'https://doi.org/10.3390/app16115605',
+	},
+	{
+		title: 'Benchmarking Deep Learning Architectures for Real-Time Intrusion Detection in Kubernetes-Orchestrated 5G Core Networks',
+		year: '2026',
+		journal: 'Research Briefs on Information and Communication Technology Evolution',
+		venueShort: 'RBICTE',
+		doi: '10.64799/rebicte.V12.3',
+		href: 'https://doi.org/10.64799/rebicte.V12.3',
+	},
+	{
+		title: 'MODI: On-Device Preprocessing of Qualcomm Diagnostic Logs for Cellular Protocol Analysis on Android',
+		year: '2026',
+		journal: 'Journal of Internet Services and Information Security (JISIS)',
+		venueShort: 'JISIS',
+		doi: '10.58346/JISIS.2026.I1.034',
+		href: 'https://doi.org/10.58346/JISIS.2026.I1.034',
+	},
+	{
+		title: 'Enhancing Roaming Security in Cloud-Native 5G Core Network through Deep Learning-Based Intrusion Detection System',
+		year: '2025',
+		journal: 'CMES - Computer Modeling in Engineering and Sciences',
+		venueShort: 'CMES',
+		doi: '10.32604/cmes.2025.072611',
+		href: 'https://doi.org/10.32604/cmes.2025.072611',
+	},
+	{
+		title: 'Extending Open5GS for IIoT: Performance Evaluation of the EAP-AKA\'Integration for 5G Standalone Non-Public Networks',
+		year: '2025',
+		journal: 'Research Briefs on Information and Communication Technology Evolution',
+		venueShort: 'RBICTE',
+		doi: '10.64799/rebicte.V11.13',
+		href: 'https://doi.org/10.64799/rebicte.V11.13',
+	},
+	{
+		title: 'Machine Learning-Assisted Dynamic Proximity-Driven Sorting Algorithm for Supermarket Navigation Optimization: A Simulation-Based Validation',
+		year: '2024',
+		journal: 'Future Internet',
+		doi: '10.3390/fi16080277',
+		href: 'https://doi.org/10.3390/fi16080277',
 	},
 ];

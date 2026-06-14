@@ -110,6 +110,11 @@
 	font-family: var(--font-plex-mono), monospace;
 }
 
+/* .serif — academic serif for publication titles */
+.serif {
+	font-family: var(--font-plex-serif), Georgia, 'Times New Roman', serif;
+}
+
 /* Large decorative index numbers (mono) */
 .display-number {
 	font-family: var(--font-plex-mono), monospace;
@@ -119,50 +124,50 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   THEME TOKENS — Editorial light
-   Background (warm paper) #FAF9F6 · Ink #161616
-   Accent (roasted amber)  #C2410C · Hairline #E7E4DD
+   THEME TOKENS — Monochrome
+   Background #F8F8F8 · Card #FFFFFF · Ink #222222 · Gray #7B7B7B
+   No chromatic accent — emphasis comes from ink ↔ gray contrast.
    ═══════════════════════════════════════════════════════════ */
 :root {
 	color-scheme: light;
 	--radius: 0.625rem;
 
-	--background: #f3f2ef;
-	--foreground: #161616;
+	--background: #f8f8f8;
+	--foreground: #222222;
 	--card: #ffffff;
-	--card-foreground: #161616;
+	--card-foreground: #222222;
 	--popover: #ffffff;
-	--popover-foreground: #161616;
-	--primary: #c2410c;
-	--primary-foreground: #faf9f6;
-	--secondary: #eceae5;
-	--secondary-foreground: #161616;
-	--muted: #eceae5;
-	--muted-foreground: #6b6b6b;
-	--accent: #c2410c;
-	--accent-foreground: #faf9f6;
+	--popover-foreground: #222222;
+	--primary: #222222;
+	--primary-foreground: #ffffff;
+	--secondary: #efefef;
+	--secondary-foreground: #222222;
+	--muted: #efefef;
+	--muted-foreground: #7b7b7b;
+	--accent: #222222;
+	--accent-foreground: #ffffff;
 	--destructive: #b3261e;
-	--border: #e4e1da;
-	--input: #e4e1da;
-	--ring: #c2410c;
+	--border: #e6e6e6;
+	--input: #e6e6e6;
+	--ring: #222222;
 
-	/* Dark surfaces — CTA banner + footer (near-black with warm tint) */
-	--dark: #141312;
-	--dark-foreground: #f6f5f2;
-	--dark-muted: rgba(246, 245, 242, 0.6);
-	--dark-border: rgba(246, 245, 242, 0.14);
+	/* Dark surfaces — CTA banner + footer */
+	--dark: #222222;
+	--dark-foreground: #f8f8f8;
+	--dark-muted: rgba(248, 248, 248, 0.6);
+	--dark-border: rgba(248, 248, 248, 0.14);
 
-	/* Paper + ink derivations */
-	--paper-2: #f4f2ec;
-	--hairline: #e7e4dd;
-	--ink-70: rgba(22, 22, 22, 0.7);
-	--ink-50: rgba(22, 22, 22, 0.5);
-	--ink-12: rgba(22, 22, 22, 0.12);
-	--ink-06: rgba(22, 22, 22, 0.06);
+	/* Surface + ink derivations */
+	--paper-2: #f0f0f0;
+	--hairline: #e6e6e6;
+	--ink-70: rgba(34, 34, 34, 0.7);
+	--ink-50: rgba(34, 34, 34, 0.5);
+	--ink-12: rgba(34, 34, 34, 0.12);
+	--ink-06: rgba(34, 34, 34, 0.06);
 
-	/* Accent opacity scale */
-	--accent-12: rgba(194, 65, 12, 0.12);
-	--accent-08: rgba(194, 65, 12, 0.08);
+	/* Neutral tint scale (replaces accent tint) */
+	--accent-12: rgba(34, 34, 34, 0.1);
+	--accent-08: rgba(34, 34, 34, 0.05);
 }
 
 @theme inline {
@@ -198,6 +203,7 @@
 
 	--font-sans: var(--font-plex-sans);
 	--font-mono: var(--font-plex-mono);
+	--font-serif: var(--font-plex-serif);
 
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);

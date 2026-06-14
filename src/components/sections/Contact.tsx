@@ -23,8 +23,10 @@ export function Contact() {
 
 				<div className='mt-9 flex flex-wrap justify-center gap-4'>
 					<a
-						href={`mailto:${profile.email}`}
-						className='group label inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-background transition-colors hover:bg-primary'>
+						href={profile.linkedin}
+						target='_blank'
+						rel='noreferrer'
+						className='group label inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-background transition hover:opacity-90'>
 						Get in touch
 						<ArrowRight className='size-4 transition-transform group-hover:translate-x-0.5' />
 					</a>

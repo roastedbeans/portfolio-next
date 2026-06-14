@@ -23,7 +23,7 @@ export function CircleArrow({
 		<span
 			aria-hidden
 			className={cn(
-				'inline-flex shrink-0 items-center justify-center rounded-full bg-foreground text-background transition duration-300 ease-out group-hover:rotate-45 group-hover:bg-primary',
+				'inline-flex shrink-0 items-center justify-center rounded-full bg-foreground text-background transition duration-300 ease-out group-hover:rotate-45 group-hover:opacity-90',
 				s.box,
 				className,
 			)}>

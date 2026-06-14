@@ -46,6 +46,7 @@ export function Projects() {
 										width={2880}
 										height={1800}
 										sizes='(max-width: 640px) 100vw, 45vw'
+										priority={i === 0}
 										className='h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]'
 									/>
 									<span className='absolute right-4 top-4'>

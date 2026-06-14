@@ -16,7 +16,9 @@ export function About() {
 			<ScrollReveal delay={0}>
 				<p className='heading max-w-4xl text-balance font-normal text-foreground'>
 					{lead}
-					{accent && <span className='text-primary'>{accent}</span>}
+					{accent && (
+						<span className='text-muted-foreground'>{accent}</span>
+					)}
 				</p>
 			</ScrollReveal>
 

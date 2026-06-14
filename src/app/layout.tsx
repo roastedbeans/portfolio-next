@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
+import { IBM_Plex_Sans, IBM_Plex_Mono, IBM_Plex_Serif } from 'next/font/google';
 import './globals.css';
 
 const plexSans = IBM_Plex_Sans({
@@ -13,6 +13,15 @@ const plexMono = IBM_Plex_Mono({
 	variable: '--font-plex-mono',
 	subsets: ['latin'],
 	weight: ['400', '500', '600'],
+	display: 'swap',
+});
+
+// Academic serif — used for publication titles (same family as Sans/Mono).
+const plexSerif = IBM_Plex_Serif({
+	variable: '--font-plex-serif',
+	subsets: ['latin'],
+	weight: ['400', '500', '600'],
+	style: ['normal', 'italic'],
 	display: 'swap',
 });
 
@@ -65,7 +74,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en' className={`${plexSans.variable} ${plexMono.variable}`}>
+		<html
+			lang='en'
+			className={`${plexSans.variable} ${plexMono.variable} ${plexSerif.variable}`}>
 			<body className='antialiased'>{children}</body>
 		</html>
 	);
